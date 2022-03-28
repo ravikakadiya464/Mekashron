@@ -1,0 +1,49 @@
+﻿@model Mekashron.Models.LoginResponse
+<div class="float-right mb-3 mr-3">
+    <button id="logoutbtn" class="btn btn-primary btn-block waves-effect waves-light px-5">Logout</button>
+</div>
+<div id="login-success-alert" class="toast" style="position: absolute; top: 0; right: 0;">
+    <div class="toast-body bg-success text-white">
+        YOU'VE LOGIN SUCCESSFULLY.
+    </div>
+</div>
+<div class="justify-content-center d-flex col-md-12">
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">EntityId</th>
+                    <th scope="col">FirstName</th>
+                    <th scope="col">LastName</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Mobile</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>@Model.EntityId</th>
+                    <td>@Model.FirstName</td>
+                    <td>@Model.LastName</td>
+                    <td>@Model.Email</td>
+                    <td>@Model.Mobile</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        if (sessionStorage.getItem("isLoginToasted") === "false") {
+            $('#login-success-alert').toast({ delay: 3000 });
+            $('#login-success-alert').toast('show');
+            sessionStorage.setItem("isLoginToasted", true);
+        }
+
+        $("#logoutbtn").on("click", function (e) {
+            sessionStorage.clear();
+            window.location.href = "/account/logout";
+        });
+    })
+</script>

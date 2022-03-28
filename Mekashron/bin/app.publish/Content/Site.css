@@ -1,0 +1,12 @@
+﻿.error {
+    font-weight: 100;
+}
+
+.toast {
+    margin: 7px;
+    min-width: 300px;
+}
+
+.company-logo {
+    color: #556ee6;
+}
